@@ -6,7 +6,7 @@
     ]
   },
   "User": {
-    "public": false,
+    "public": true,
     "dataSource": "db"
   },
   "AccessToken": {
