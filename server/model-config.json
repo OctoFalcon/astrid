@@ -24,5 +24,57 @@
   "Role": {
     "public": false,
     "dataSource": "db"
+  },
+  "price": {
+    "dataSource": "db",
+    "public": true
+  },
+  "inventory": {
+    "dataSource": "db",
+    "public": true
+  },
+  "inventoryAvailability": {
+    "dataSource": "db",
+    "public": false
+  },
+  "orderItem": {
+    "dataSource": "db",
+    "public": false
+  },
+  "order": {
+    "dataSource": "db",
+    "public": true
+  },
+  "adjustment": {
+    "dataSource": "db",
+    "public": false
+  },
+  "sku": {
+    "dataSource": "db",
+    "public": false
+  },
+  "value": {
+    "dataSource": "db",
+    "public": false
+  },
+  "attachment": {
+    "dataSource": "db",
+    "public": false
+  },
+  "attribute": {
+    "dataSource": "db",
+    "public": false
+  },
+  "childCategory": {
+    "dataSource": "db",
+    "public": false
+  },
+  "category": {
+    "dataSource": "db",
+    "public": true
+  },
+  "product": {
+    "dataSource": "db",
+    "public": true
   }
 }
