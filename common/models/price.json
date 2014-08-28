@@ -1,0 +1,35 @@
+{
+  "name": "price",
+  "plural": "prices",
+  "base": "PersistedModel",
+  "properties": {
+    "unitPrice": {
+      "type": "number"
+    },
+    "productId": {
+      "type": "string"
+    },
+    "partNumber": {
+      "type": "string"
+    },
+    "resourceId": {
+      "type": "string"
+    },
+    "resourceName": {
+      "type": "string"
+    },
+    "priceDesc": {
+      "type": "string"
+    },
+    "priceUsage": {
+      "type": "string"
+    },
+    "priceValue": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

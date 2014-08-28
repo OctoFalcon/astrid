@@ -1,0 +1,30 @@
+{
+  "name": "attribute",
+  "base": "PersistedModel",
+  "properties": {
+    "identifier": {
+      "type": "string"
+    },
+    "values": {
+      "type": "value"
+    },
+    "comparable": {
+      "type": "string"
+    },
+    "searchable": {
+      "type": "string"
+    },
+    "displayable": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

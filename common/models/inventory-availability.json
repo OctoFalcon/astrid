@@ -1,0 +1,25 @@
+{
+  "name": "inventoryAvailability",
+  "base": "PersistedModel",
+  "properties": {
+    "availableQty": {
+      "type": "number"
+    },
+    "inventoryStatus": {
+      "type": "string"
+    },
+    "onlineStoreId": {
+      "type": "string"
+    },
+    "onlineStoreName": {
+      "type": "string"
+    },
+    "productId": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

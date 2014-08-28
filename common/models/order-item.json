@@ -1,0 +1,70 @@
+{
+  "name": "orderItem",
+  "base": "PersistedModel",
+  "properties": {
+    "UOM": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "createDate": {
+      "type": "date"
+    },
+    "orderItemId": {
+      "type": "number"
+    },
+    "inventoryStatus": {
+      "type": "number"
+    },
+    "price": {
+      "type": "number"
+    },
+    "status": {
+      "type": "number"
+    },
+    "partNumber": {
+      "type": "string"
+    },
+    "productId": {
+      "type": "number"
+    },
+    "productUrl": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "salesTax": {
+      "type": "number"
+    },
+    "salesTaxCurrency": {
+      "type": "string"
+    },
+    "shippingCharge": {
+      "type": "number"
+    },
+    "shippingChargeCurrency": {
+      "type": "string"
+    },
+    "shippingTax": {
+      "type": "number"
+    },
+    "shippingTaxCurrency": {
+      "type": "string"
+    },
+    "unitPrice": {
+      "type": "number"
+    },
+    "unitQuantity": {
+      "type": "number"
+    },
+    "unitUOM": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

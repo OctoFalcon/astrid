@@ -1,0 +1,16 @@
+{
+  "name": "inventory",
+  "base": "PersistedModel",
+  "properties": {
+    "resourceId": {
+      "type": "string"
+    },
+    "resourceName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

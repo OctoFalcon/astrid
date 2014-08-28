@@ -1,0 +1,46 @@
+{
+  "name": "childCategory",
+  "base": "PersistedModel",
+  "properties": {
+    "identifier": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullImage": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "string"
+    },
+    "altImageText": {
+      "type": "string"
+    },
+    "parentCategoryId": {
+      "type": "string"
+    },
+    "resourceId": {
+      "type": "string"
+    },
+    "metaKeyword": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "uniqueId": {
+      "type": "number"
+    },
+    "shortDescription": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

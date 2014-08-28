@@ -1,0 +1,72 @@
+{
+  "name": "product",
+  "base": "PersistedModel",
+  "properties": {
+    "identifier": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "shortDesc": {
+      "type": "string"
+    },
+    "longDesc": {
+      "type": "string"
+    },
+    "parentCategoryId": {
+      "type": [
+        "string"
+      ]
+    },
+    "partNumber": {
+      "type": "string"
+    },
+    "productType": {
+      "type": "string"
+    },
+    "metaKeyword": {
+      "type": "string"
+    },
+    "metaDesc": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "string"
+    },
+    "fullImage": {
+      "type": "string"
+    },
+    "altImageText": {
+      "type": "string"
+    },
+    "inventory": {
+      "type": "string"
+    },
+    "numberOfSKU": {
+      "type": "number"
+    },
+    "Price": {
+      "type": "price"
+    },
+    "Sku": {
+      "type": "sku"
+    },
+    "Attachments": {
+      "type": "attachment"
+    },
+    "Attributes": {
+      "type": "attribute"
+    },
+    "Values": {
+      "type": "value"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,32 @@
+{
+  "name": "order",
+  "base": "PersistedModel",
+  "properties": {
+    "orderId": {
+      "type": "number"
+    },
+    "orderItem": {
+      "type": [
+        "orderItem"
+      ]
+    },
+    "adjustments": {
+      "type": [
+        "adjustment"
+      ]
+    },
+    "grandTotal": {
+      "type": "number"
+    },
+    "grandTotalCurrency": {
+      "type": "string"
+    },
+    "lastUpdateTime": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

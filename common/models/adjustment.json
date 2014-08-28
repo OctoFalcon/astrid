@@ -1,0 +1,28 @@
+{
+  "name": "adjustment",
+  "base": "PersistedModel",
+  "properties": {
+    "amount": {
+      "type": "number"
+    },
+    "code": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "displayLevel": {
+      "type": "string"
+    },
+    "usage": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,24 @@
+{
+  "name": "attachment",
+  "base": "PersistedModel",
+  "properties": {
+    "mimeType": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
