@@ -1,7 +1,7 @@
 applications:
 - disk_quota: 1024M
-  host: toothless
-  name: toothless
+  host: astrid
+  name: astrid
   command: slc run
   path: .
   domain: mybluemix.net
