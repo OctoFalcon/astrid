@@ -18,7 +18,7 @@ Node.js app runs on a server-side high performance, highly scalable, event-drive
 
 6. Deploy your app:
 
-		cf push toothless
+		cf push astrid
 
-7. Access your app: [toothless.mybluemix.net](//toothless.mybluemix.net)
+7. Access your app: [astrid.mybluemix.net](//toothless.mybluemix.net)
 
