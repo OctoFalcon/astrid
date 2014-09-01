@@ -26,55 +26,75 @@
     "dataSource": "db"
   },
   "price": {
-    "dataSource": "db",
-    "public": true
+    "public": true,
+    "dataSource": "db"
   },
   "inventory": {
-    "dataSource": "db",
-    "public": true
+    "public": true,
+    "dataSource": "db"
   },
   "inventoryAvailability": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "orderItem": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "order": {
-    "dataSource": "db",
-    "public": true
+    "public": true,
+    "dataSource": "db"
   },
   "adjustment": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "sku": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "value": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "attachment": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "attribute": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "childCategory": {
-    "dataSource": "db",
-    "public": false
+    "public": false,
+    "dataSource": "db"
   },
   "category": {
-    "dataSource": "db",
-    "public": true
+    "public": true,
+    "dataSource": "db"
   },
   "product": {
-    "dataSource": "db",
-    "public": true
+    "public": true,
+    "dataSource": "db"
+  },
+  "CategoryHandler": {
+    "public": false,
+    "dataSource": "wcsCategoryDS"
+  },
+  "PriceHandler": {
+    "public": false,
+    "dataSource": "wcsPriceDS"
+  },
+  "InventoryHandler": {
+    "public": false,
+    "dataSource": "wcsInventoryDS"
+  },
+  "OrderHandler": {
+    "public": false,
+    "dataSource": "wcsOrderDS"
+  },
+  "ProductHandler": {
+    "public": false,
+    "dataSource": "wcsProductDS"
   }
 }

@@ -2,5 +2,25 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "wcsCategoryDS": {
+    "name": "wcsCategoryDS",
+    "connector": "rest"
+  },
+  "wcsPriceDS": {
+    "name": "wcsPriceDS",
+    "connector": "rest"
+  },
+  "wcsInventoryDS": {
+    "name": "wcsInventoryDS",
+    "connector": "rest"
+  },
+  "wcsOrderDS": {
+    "name": "wcsOrderDS",
+    "connector": "rest"
+  },
+  "wcsProductDS": {
+    "name": "wcsProductDS",
+    "connector": "rest"
   }
 }
