@@ -1,0 +1,9 @@
+{
+  "name": "InventoryHandler",
+  "base": "Model",
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
