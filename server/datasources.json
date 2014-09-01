@@ -5,7 +5,51 @@
   },
   "wcsCategoryDS": {
     "name": "wcsCategoryDS",
-    "connector": "rest"
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/topCategory",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getTopCategories": [
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/categoryInfo/{categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getCategoryById": [
+            "categoryId"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/categoryInfo/{categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getCategoryByParent": [
+            "categoryId"
+          ]
+        }
+      }
+    ]
   },
   "wcsPriceDS": {
     "name": "wcsPriceDS",
