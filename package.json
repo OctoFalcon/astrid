@@ -18,7 +18,7 @@
     "loopback-explorer": "^1.1.0"
   },
   "engines": {
-		"node": "0.10.26"
-	},
-	"repository": {}
+    "node": "0.10.26"
+  },
+  "repository": {}
 }
