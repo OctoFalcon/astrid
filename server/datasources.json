@@ -65,6 +65,84 @@
   },
   "wcsProductDS": {
     "name": "wcsProductDS",
-    "connector": "rest"
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/productDetailsView/{!productId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "findProductById": ["productId"]
+        }
+      },
+      
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost/search/resources/store/{storeId=10001}/productview/bySearchTerm/{!searchTerm}",
+          "headers": {
+            "content-type": "application/json"
+          },
+          "query": {
+            "currency": "{currency=USD}",
+            "langId": "{langId=-1}",
+            "responseFormat": "{responseFormat=json}"
+          }
+        },
+        "functions": {
+          "findProductsBySearchTerm": [
+            "searchTerm",
+            "storeId",
+            "responseFormat",
+            "currency",
+            "langId"
+          ]
+        }
+      },
+      
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost/search/resources/store/{storeId=10001}/productview/{!partNumber}",
+          "headers": {
+            "content-type": "application/json"
+          },
+          "query": {
+            "currency": "{currency=USD}",
+            "langId": "{langId=-1}",
+            "responseFormat": "{responseFormat=json}"
+          }
+        },
+        "functions": {
+          "findProductByPartNumber": [
+            "partNumber",
+            "storeId",
+            "responseFormat",
+            "currency",
+            "langId"
+          ]
+        }
+      },
+     
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/productview/byCategory/{!categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "findProductsByCategory": [
+            "categoryId"
+          ]
+        }
+      }
+    ]
   }
 }
