@@ -3,7 +3,7 @@
   "base": "PersistedModel",
   "properties": {
     "childCategory": {
-      "type": "ChildCategory"
+      "type": "childCategory"
     },
     "recordSetCount": {
       "type": "number"
