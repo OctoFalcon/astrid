@@ -93,7 +93,7 @@
     "public": false,
     "dataSource": "wcsOrderDS"
   },
-  "ProductHandler": {
+  "productHandler": {
     "public": false,
     "dataSource": "wcsProductDS"
   }
