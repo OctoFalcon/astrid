@@ -37,6 +37,11 @@
     },
     "shortDescription": {
       "type": "string"
+    },
+    "subCategoryNames": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],
