@@ -9,7 +9,7 @@ module.exports = function(productHandler){
             uri += 'id='+ids[i]+'&';
         }
         uri = uri.substring(0, uri.length-1);
-        console.log(uri); 
+        // console.log(uri); 
         request.get({
             url: uri,
             method: 'GET',
@@ -27,5 +27,3 @@ module.exports = function(productHandler){
             accepts: {arg: 'ids', type: 'array'}
         });
 }
-
-
