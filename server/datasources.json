@@ -54,6 +54,10 @@
     "name": "wcsPriceDS",
     "connector": "rest"
   },
+  "wcsAuthenticationDS": {
+    "name": "wcsAuthenticationDS",
+    "connector": "rest"
+  },  
   "wcsInventoryDS": {
     "name": "wcsInventoryDS",
     "connector": "rest"
