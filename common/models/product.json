@@ -59,7 +59,7 @@
       "type": "attachment"
     },
     "Attributes": {
-      "type": "attribute"
+      "type": ["attribute"]
     },
     "Values": {
       "type": "value"

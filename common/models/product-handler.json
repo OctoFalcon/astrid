@@ -1,5 +1,5 @@
 {
-  "name": "ProductHandler",
+  "name": "productHandler",
   "base": "Model",
   "properties": {},
   "validations": [],
