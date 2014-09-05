@@ -98,7 +98,7 @@
     "dataSource": "wcsAuthenticationDS"
   },  
   "productHandler": {
-    "public": true,
+    "public": false,
     "dataSource": "wcsProductDS"
   }
 }
