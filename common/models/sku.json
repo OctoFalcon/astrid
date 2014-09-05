@@ -12,7 +12,7 @@
       "type": "attachment"
     },
     "attributes": {
-      "type": "attribute"
+      "type": ["attribute"]
     },
     "metadata": {
       "type": [
