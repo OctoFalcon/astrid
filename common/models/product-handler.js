@@ -223,15 +223,15 @@ module.exports = function(productHandler){
 
     productHandler.remoteMethod('searchResultsTransfrom', 
         { 
-            returns: {arg: 'product', type: 'JSON'},
-            http: {path: '/searchResultsTransfrom', verb: 'get'},
+            returns: {arg: 'search', type: 'JSON'},
+            http: {path: '/searchResultsTransfromBySearchTerm', verb: 'get'},
             accepts: {arg: 'searchTerm', type: 'string'}
         });
 
     productHandler.remoteMethod('productTrans', 
         { 
             returns: {arg: 'product', type: 'JSON'},
-            http: {path: '/productTrans', verb: 'get'},
+            http: {path: '/productTransformById', verb: 'get'},
             accepts: {arg: 'id', type: 'string'}
         });
 }
