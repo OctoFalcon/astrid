@@ -1,7 +1,7 @@
 var app = require('../../server/server');
 module.exports = function(product){ 
     
-    product.productTrans = function(cb){ 
+    product.productTrans = function(id, cb){ 
         // console.log(id);
         var productClass = app.models.product;
         var productObj = new productClass();
@@ -29,7 +29,7 @@ module.exports = function(product){
         /*var valuesClass = app.models.value;
         var valuesObj = new valuesClass();*/
         var productHandler = app.models.productHandler;
-        productHandler.findProductById('',function(err, productRes){
+        productHandler.findProductById(id ,function(err, productRes){
             var productView = productRes.CatalogEntryView;
             productView.forEach(function(product){
                 productObj.identifier = product.uniqueID;
@@ -135,7 +135,7 @@ module.exports = function(product){
         });
     }
 
-    product.searchResultsTransfrom = function(cb){ 
+    product.searchResultsTransfrom = function(searchTerm, cb){ 
         // console.log(searchTerm);
         var productClass = app.models.product;
 
@@ -165,7 +165,7 @@ module.exports = function(product){
         var valuesObj = new valuesClass();
 
         var productHandler = app.models.productHandler;
-        productHandler.findProductsBySearchTerm('', function(err, searchRes){
+        productHandler.findProductsBySearchTerm(searchTerm, function(err, searchRes){
             var productView = searchRes.catalogEntryView;
             // console.log(productView.length);
             var searchArray = [];
@@ -199,13 +199,13 @@ module.exports = function(product){
         { 
             returns: {arg: 'search', type: 'JSON'},
             http: {path: '/searchResultsTransfromBySearchTerm', verb: 'get'},
-            // accepts: {arg: 'searchTerm', type: 'string'}
+            accepts: {arg: 'searchTerm', type: 'string'}
         });
 
     product.remoteMethod('productTrans', 
         { 
             returns: {arg: 'product', type: 'JSON'},
-            http: {path: '/productTransformById', verb: 'get'},
-            // accepts: {arg: 'id', type: 'string'}
+            http: {path: '/ProductDetails', verb: 'get'},
+            accepts: {arg: 'id', type: 'string'}
         });
 }
