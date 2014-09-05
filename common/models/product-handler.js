@@ -31,24 +31,24 @@ module.exports = function(productHandler){
         var skuClass = app.models.sku;
         var skuObj = new skuClass();
 
-        var attachmentsClass = app.models.attachment;
+        /*var attachmentsClass = app.models.attachment;
         var attachmentsObj = new attachmentsClass();
 
         var skuAttachmentsClass = app.models.attachment;
-        var skuAttachmentsObj = new skuAttachmentsClass();
+        var skuAttachmentsObj = new skuAttachmentsClass();*/
 
         var skuAttributesClass = app.models.attribute;
-        var skuAttributesObj = new skuAttributesClass();
+        
 
         var skuValuesClass = app.models.value;
-        var skuValuesObj = new skuValuesClass();
+        
 
         var attributesClass = app.models.attribute;
 
-        var attrValuesClass = app.models.value;
+        // var attrValuesClass = app.models.value;
 
-        var valuesClass = app.models.value;
-        var valuesObj = new valuesClass();
+        /*var valuesClass = app.models.value;
+        var valuesObj = new valuesClass();*/
 
         productHandler.findProductById(id, function(err, productRes){
             var productView = productRes.CatalogEntryView;
@@ -66,16 +66,16 @@ module.exports = function(productHandler){
                 productObj.thumbnail = product.thumbnail;
                 productObj.fullImage = product.fullImage;
                 productObj.altImageText = product.fullImageAltDescription;
-                productObj.inventory = "dummy inventory";
+                // productObj.inventory = "dummy inventory";
                 productObj.numberOfSKU = product.numberOfSKUs;
 
                 var prodPrices = product.Price;
                 prodPrices.forEach(function(prodPrice){
                     priceObj.unitPrice = prodPrice.priceValue;
-                    priceObj.productId = product.uniqueID;
+                    /*priceObj.productId = product.uniqueID;
                     priceObj.partNumber = product.partNumber;
                     priceObj.resourceId = productRes.resourceId;
-                    priceObj.resourceName = productRes.resourceName;
+                    priceObj.resourceName = productRes.resourceName;*/
                     priceObj.priceDesc = prodPrice.priceDescription;
                     priceObj.priceUsage = prodPrice.priceUsage;
                     priceObj.priceValue = prodPrice.priceValue;
@@ -83,27 +83,31 @@ module.exports = function(productHandler){
                 
                 productObj.Price = priceObj;
 
-                skuAttachmentsObj.mimeType = "dummy attachment mimeType";
+                /*skuAttachmentsObj.mimeType = "dummy attachment mimeType";
                 skuAttachmentsObj.path = "dummy attachment path";
                 skuAttachmentsObj.identifier = "dummy attachment identifier";
                 skuAttachmentsObj.metadata = ["dummy attachment metadata"];
-
+*/
                 var skus = product.SKUs;
                 skus.forEach(function(sku){
                     var skusAttrs = sku.Attributes;
+                    var skuAttrs = [];
                     skusAttrs.forEach(function(skuAttr){
+                        var skuAttributesObj = new skuAttributesClass();
+                        var skuValuesObj = new skuValuesClass();
                         var skuAttrVals = skuAttr.Values;
                         skuAttrVals.forEach(function(skuAttrVal){
                             skuValuesObj.values = [skuAttrVal.values];
                             skuAttributesObj.identifier = skuAttrVal.identifier;
                         });
                         
-                        skuValuesObj.metadata = ["dummy value metadata"];
+                        // skuValuesObj.metadata = ["dummy value metadata"];
                         skuAttributesObj.values = skuValuesObj;
                         skuAttributesObj.comparable = skuAttr.comparable;
                         skuAttributesObj.searchable = skuAttr.searchable;
                         skuAttributesObj.displayable = skuAttr.displayable;
-                        skuAttributesObj.metadata = ["dummy metadata"];
+                        // skuAttributesObj.metadata = ["dummy metadata"];
+                        skuAttrs.push(skuAttributesObj);
                     });
                     
                     skuObj.identifier = sku.SKUUniqueID;
@@ -111,43 +115,41 @@ module.exports = function(productHandler){
                     skusPrices.forEach(function(skuPrice){
                         skuObj.price = skusPrices.SKUPriceValue;    
                     });
-                    skuObj.attachments = skuAttachmentsObj;
-                    skuObj.attributes = skuAttributesObj;
-                    skuObj.metadata = ["dummy metadata"];
+                    // skuObj.attachments = skuAttachmentsObj;
+                    skuObj.attributes = skuAttrs;
+                    // skuObj.metadata = ["dummy metadata"];
                 });
                 
                 productObj.Sku = skuObj;
 
-                attachmentsObj.mimeType = "dummy attachment mimeType";
+                /*attachmentsObj.mimeType = "dummy attachment mimeType";
                 attachmentsObj.path = "dummy attachment path";
                 attachmentsObj.identifier = "dummy attachment identifier";
                 attachmentsObj.metadata = ["dummy attachment metadata"];
-                productObj.Attachments = attachmentsObj;
+                productObj.Attachments = attachmentsObj;*/
                 
-                var attributesObj = new attributesClass();
                 var attributes = product.Attributes;
-                // var attrObj = [];
+                var attrObj = [];
                 attributes.forEach(function(attribute){
-                    
-                    var attrValuesObj = new attrValuesClass();
+                    var attributesObj = new attributesClass();
+                    // var attrValuesObj = new attrValuesClass();
                     attributesObj.identifier = attribute.identifier;
 
-                    attrValuesObj.values = ["dummy values"];
-                    attrValuesObj.metadata = ["dummy values"];
-                    attributesObj.values = attrValuesObj;
+                    // attrValuesObj.values = ["dummy values"];
+                    // attrValuesObj.metadata = ["dummy values"];
+                    // attributesObj.values = attrValuesObj;
 
                     attributesObj.comparable = attribute.comparable;
                     attributesObj.searchable = attribute.searchable;
                     attributesObj.displayable = attribute.displayable;
-                    attributesObj.metadata = ["dummy metadata"];
-                    // attrObj.push(attributesObj);
+                    // attributesObj.metadata = ["dummy metadata"];
+                    attrObj.push(attributesObj);
                 });
-                // productObj.Attributes = attrObj;
-                productObj.Attributes = attributesObj;
+                productObj.Attributes = attrObj;
 
-                valuesObj.values = ["dummy values"];
+                /*valuesObj.values = ["dummy values"];
                 valuesObj.metadata = ["dummy value metadata"];
-                productObj.Values = valuesObj;
+                productObj.Values = valuesObj;*/
             });
             
             cb(null, productObj);
@@ -211,7 +213,7 @@ module.exports = function(productHandler){
             cb(null, searchArray);
         });
     }
-        
+
     productHandler.remoteMethod('findByIds', 
         { 
             returns: {arg: 'productHandler', type: 'JSON'},
