@@ -93,8 +93,12 @@
     "public": false,
     "dataSource": "wcsOrderDS"
   },
-  "productHandler": {
+  "LoginIdentityHandler": {
     "public": false,
+    "dataSource": "wcsAuthenticationDS"
+  },  
+  "productHandler": {
+    "public": true,
     "dataSource": "wcsProductDS"
   }
 }
