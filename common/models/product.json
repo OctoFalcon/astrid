@@ -1,5 +1,6 @@
 {
   "name": "product",
+  "plural": "products",
   "base": "PersistedModel",
   "properties": {
     "identifier": {

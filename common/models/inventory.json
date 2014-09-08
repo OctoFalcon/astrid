@@ -1,5 +1,6 @@
 {
   "name": "inventory",
+  "plural": "inventory",
   "base": "PersistedModel",
   "properties": {
     "resourceId": {

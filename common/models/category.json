@@ -1,5 +1,6 @@
 {
   "name": "category",
+  "plural": "category",
   "base": "PersistedModel",
   "properties": {
     "childCategory": {
