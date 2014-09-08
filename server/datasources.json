@@ -38,7 +38,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://restfalcon.mybluemix.net/categoryInfo/{categoryId}",
+          "url": "http://restfalcon.mybluemix.net/categoryview/byParentCategory/{categoryId}",
           "headers": {
             "content-type": "application/json"
           }
