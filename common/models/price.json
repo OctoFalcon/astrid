@@ -1,6 +1,6 @@
 {
   "name": "price",
-  "plural": "prices",
+  "plural": "price",
   "base": "PersistedModel",
   "properties": {
     "unitPrice": {
