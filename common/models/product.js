@@ -1,4 +1,20 @@
+
+
 var app = require('../../server/server');
+var ds = app.dataSources.db;
+var products = ds.getModel ('product');
+        
+// Hiding the existing remote methods.
+products.sharedClass.find('create',true).shared = false;
+products.sharedClass.find('upsert',true).shared = false;
+products.sharedClass.find('exists',true).shared = false;
+products.sharedClass.find('findById',true).shared = false;
+products.sharedClass.find('find',true).shared = false;
+products.sharedClass.find('findOne',true).shared = false;
+products.sharedClass.find('updateAll',true).shared = false;
+products.sharedClass.find('deleteById',true).shared = false;
+products.sharedClass.find('count',true).shared = false;
+products.sharedClass.find('updateAttributes',false).shared = false;
 module.exports = function(product){ 
     
     product.productTrans = function(id, cb){ 
@@ -197,15 +213,15 @@ module.exports = function(product){
 
     product.remoteMethod('searchResultsTransfrom', 
         { 
-            returns: {arg: 'search', type: 'JSON'},
-            http: {path: '/searchResultsTransfromBySearchTerm', verb: 'get'},
+            returns: {arg: 'product', type: 'JSON'},
+            http: {path: '/bySearchTerm', verb: 'get'},
             accepts: {arg: 'searchTerm', type: 'string'}
         });
 
     product.remoteMethod('productTrans', 
         { 
             returns: {arg: 'product', type: 'JSON'},
-            http: {path: '/ProductDetails', verb: 'get'},
+            http: {path: '/byProductId', verb: 'get'},
             accepts: {arg: 'id', type: 'string'}
         });
 }
