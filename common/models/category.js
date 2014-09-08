@@ -2,6 +2,21 @@ var app = require('../../server/server');
 var util = require("util");
 var async = require("async");
 
+var ds = app.dataSources.db;
+var category = ds.getModel ('category');
+        
+// Hiding the existing remote methods.
+category.sharedClass.find('create',true).shared = false;
+category.sharedClass.find('upsert',true).shared = false;
+category.sharedClass.find('exists',true).shared = false;
+category.sharedClass.find('findById',true).shared = false;
+category.sharedClass.find('find',true).shared = false;
+category.sharedClass.find('findOne',true).shared = false;
+category.sharedClass.find('updateAll',true).shared = false;
+category.sharedClass.find('deleteById',true).shared = false;
+category.sharedClass.find('count',true).shared = false;
+category.sharedClass.find('updateAttributes',false).shared = false;
+
 module.exports = function(category){
 	
 	category.getNavBar = function(cb){
