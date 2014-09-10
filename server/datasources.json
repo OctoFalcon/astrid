@@ -11,7 +11,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/11001/categoryview/@top",
+          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/categoryview/@top",
           "headers": {
             "content-type": "application/json"
           }
@@ -24,7 +24,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/11001/categoryview/byId/{categoryId}",
+          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/categoryview/byId/{categoryId}",
           "headers": {
             "content-type": "application/json"
           }
@@ -38,7 +38,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/11001/categoryview/byParentCategory/{categoryId}",
+          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/categoryview/byParentCategory/{categoryId}",
           "headers": {
             "content-type": "application/json"
           }
@@ -75,7 +75,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/11001/productview/byId/{!productId}",
+          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/productview/byId/{!productId}",
           "headers": {
             "content-type": "application/json"
           }
@@ -88,7 +88,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/search/resources/store/11001/productview/bySearchTerm/{!searchTerm}}?pageNumber=1&pageSize=16",
+          "url": "http://toothless.ngrok.com/search/resources/store/10001/productview/bySearchTerm/{!searchTerm}}?pageNumber=1&pageSize=16",
           "headers": {
             "content-type": "application/json"
           },
@@ -108,7 +108,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/search/resources/store/11001/productview/{!partNumber}",
+          "url": "http://toothless.ngrok.com/search/resources/store/10001/productview/{!partNumber}",
           "headers": {
             "content-type": "application/json"
           },
@@ -128,7 +128,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/11001/productview/byCategory/{!categoryId}",
+          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/productview/byCategory/{!categoryId}",
           "headers": {
             "content-type": "application/json"
           }
