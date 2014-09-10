@@ -165,7 +165,7 @@ module.exports = function(product){
         var productClass = app.models.product;
 
         var priceClass = app.models.price;
-        var priceObj = new priceClass();
+        
 
         var skuClass = app.models.sku;
         var skuObj = new skuClass();
@@ -208,13 +208,13 @@ module.exports = function(product){
                     var prodPrices = product.price;
                     if(prodPrices){
                         prodPrices.forEach(function(prodPrice){
+                            var priceObj = new priceClass();
                             priceObj.priceDesc = prodPrice.description;
                             priceObj.priceUsage = prodPrice.usage;
                             priceObj.priceValue = prodPrice.value;
+                            productObj.Price = priceObj;        
                         });
                     }
-                    productObj.Price = priceObj;
-
                     searchArray.push(productObj);
                 });
             }
