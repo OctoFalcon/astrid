@@ -1,0 +1,144 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "wcsCategoryDS": {
+    "name": "wcsCategoryDS",
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/topCategory",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getTopCategories": [
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/categoryInfo/{categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getCategoryById": [
+            "categoryId"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/categoryview/byParentCategory/{categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getCategoryByParent": [
+            "categoryId"
+          ]
+        }
+      }
+    ]
+  },
+  "wcsPriceDS": {
+    "name": "wcsPriceDS",
+    "connector": "rest"
+  },
+  "wcsAuthenticationDS": {
+    "name": "wcsAuthenticationDS",
+    "connector": "rest"
+  },  
+  "wcsInventoryDS": {
+    "name": "wcsInventoryDS",
+    "connector": "rest"
+  },
+  "wcsOrderDS": {
+    "name": "wcsOrderDS",
+    "connector": "rest"
+  },
+  "wcsProductDS": {
+    "name": "wcsProductDS",
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/productDetailsView/{!productId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "findProductById": ["productId"]
+        }
+      },
+      
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/bySearchTerm/{!searchTerm}",
+          "headers": {
+            "content-type": "application/json"
+          },
+          "query": {
+            "currency": "{currency=USD}",
+            "langId": "{langId=-1}",
+            "responseFormat": "{responseFormat=json}"
+          }
+        },
+        "functions": {
+          "findProductsBySearchTerm": [
+            "searchTerm"
+          ]
+        }
+      },
+      
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/byPartNumber/{!partNumber}",
+          "headers": {
+            "content-type": "application/json"
+          },
+          "query": {
+            "currency": "{currency=USD}",
+            "langId": "{langId=-1}",
+            "responseFormat": "{responseFormat=json}"
+          }
+        },
+        "functions": {
+          "findProductByPartNumber": [
+            "partNumber"
+          ]
+        }
+      },
+     
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://restfalcon.mybluemix.net/productview/byCategory/{!categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "findProductsByCategory": [
+            "categoryId"
+          ]
+        }
+      }
+    ]
+  }
+}
