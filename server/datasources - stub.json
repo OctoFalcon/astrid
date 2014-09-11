@@ -11,7 +11,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/categoryview/@top",
+          "url": "http://restfalcon.mybluemix.net/topCategory",
           "headers": {
             "content-type": "application/json"
           }
@@ -24,7 +24,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/categoryview/byId/{categoryId}",
+          "url": "http://restfalcon.mybluemix.net/categoryInfo/{categoryId}",
           "headers": {
             "content-type": "application/json"
           }
@@ -38,7 +38,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/categoryview/byParentCategory/{categoryId}",
+          "url": "http://restfalcon.mybluemix.net/categoryview/byParentCategory/{categoryId}",
           "headers": {
             "content-type": "application/json"
           }
@@ -75,7 +75,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/productview/byId/{!productId}",
+          "url": "http://restfalcon.mybluemix.net/productDetailsView/{!productId}",
           "headers": {
             "content-type": "application/json"
           }
@@ -88,7 +88,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/search/resources/store/10001/productview/bySearchTerm/{!searchTerm}}?pageNumber=1&pageSize=16",
+          "url": "http://restfalcon.mybluemix.net/bySearchTerm/{!searchTerm}",
           "headers": {
             "content-type": "application/json"
           },
@@ -108,7 +108,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/search/resources/store/10001/productview/{!partNumber}",
+          "url": "http://restfalcon.mybluemix.net/byPartNumber/{!partNumber}",
           "headers": {
             "content-type": "application/json"
           },
@@ -128,7 +128,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/productview/byCategory/{!categoryId}",
+          "url": "http://restfalcon.mybluemix.net/productview/byCategory/{!categoryId}",
           "headers": {
             "content-type": "application/json"
           }
