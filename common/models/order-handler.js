@@ -27,6 +27,39 @@ module.exports = function(OrderHandler){
           returns: {arg: 'addItemToCart', type: 'string'},
         }
     );
+	//Add item 2 cart:
+	OrderHandler.addItem2Cart = function(prodId, qty, wcToken, trustedToken, pId, uId, cb) {
+        var uri = 'https://toothless.ngrok.com/wcs/resources/store/10151/cart';
+        console.log(uri); 
+        request({
+            url: uri,
+            method: 'POST',
+			headers:{"WCToken": wcToken,
+					"WCTrustedToken": trustedToken,
+					"personalizationID": pId,
+					"userId": uId
+				},				
+			json:{
+				"orderItem": [{
+				"productId": prodId,
+				"quantity": qty
+				}]
+			},
+        }, 
+		function(err, response) {
+            if (err) console.error(err);
+			console.log('Result: '+JSON.stringify(response.body));
+			cb(null, response.body);
+        });	
+    }
+    OrderHandler.remoteMethod(
+        'addItem2Cart', 
+        {
+          accepts: [{arg: 'prodId', type: 'string'},{arg: 'qty', type: 'string'},{arg: 'wcToken', type: 'string'},
+					{arg: 'trustedToken', type: 'string'},{arg: 'pId', type: 'string'},{arg: 'uid', type: 'string'}],
+          returns: {arg: 'add2Cart', type: 'string'},
+        }
+    );
 
 	//Display cart:
 	OrderHandler.displayCart = function(displayCart,  cb) {
