@@ -98,10 +98,9 @@ module.exports = function(product){
                                         if(skuAttrVals){
                                             skuAttrVals.forEach(function(skuAttrVal){
                                                 skuValuesObj.values = [skuAttrVal.values];
-                                                skuAttributesObj.identifier = skuAttrVal.identifier;
                                             });
                                         }
-                                        
+                                        skuAttributesObj.identifier = skuAttr.name;
                                         // skuValuesObj.metadata = ["dummy value metadata"];
                                         skuAttributesObj.values = skuValuesObj;
                                         skuAttributesObj.comparable = skuAttr.comparable;
