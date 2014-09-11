@@ -22,22 +22,25 @@ module.exports = function(inventory){
 		var inventoryHandler = app.models.InventoryHandler;
 		inventoryHandler.getInventory(productId, function(err, inventoryHandlerRes){
 			//console.log(inventoryHandlerRes);
-			var iaView = inventoryHandlerRes.InventoryAvailability;
-			inventoryObj.resourceId = inventoryHandlerRes.resourceId;
-			inventoryObj.resourceName = inventoryHandlerRes.resourceName;
-			var inventoryAvailabilityClass = app.models.inventoryAvailability;
-			var inventoryAvailabilityObj = new inventoryAvailabilityClass({
-				availableQty : iaView[0].availableQuantity,
-				onlineStoreId : iaView[0].onlineStoreId,
-				onlineStoreName : iaView[0].onlineStoreName,
-				productId : iaView[0].productId
-			});
-			inventoryObj.inventoryAvailabilityObj=inventoryAvailabilityObj;
+			if(inventoryHandlerRes){
+				var iaView = inventoryHandlerRes.InventoryAvailability;
+				
+				inventoryObj.resourceId = inventoryHandlerRes.resourceId;
+				inventoryObj.resourceName = inventoryHandlerRes.resourceName;
+				var inventoryAvailabilityClass = app.models.inventoryAvailability;
+				var inventoryAvailabilityObj = new inventoryAvailabilityClass({
+					availableQty : iaView[0].availableQuantity,
+					onlineStoreId : iaView[0].onlineStoreId,
+					onlineStoreName : iaView[0].onlineStoreName,
+					productId : iaView[0].productId
+				});
+				inventoryObj.inventoryAvailabilityObj=inventoryAvailabilityObj;
+			}
 			cb(null, inventoryObj);
 		});
     }
     inventory.remoteMethod(
-        ' getInventoryById', 
+        'getInventoryById', 
         {
           accepts: [{arg: 'productId', type: 'string'}],
 		  http: {path: '/byProductId', verb: 'get'},
