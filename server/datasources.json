@@ -83,13 +83,13 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/guestidentity",
+          "url": "https://localhost/wcs/resources/store/10151/guestidentity",
           "headers": {
             "content-type": "application/json"
           }
         },
         "functions": {
-			"guestidentity":[]
+			"guestIdentity":[]
         }
       }
 	]
