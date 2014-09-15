@@ -4,7 +4,7 @@ var async = require("async");
 
 var ds = app.dataSources.db;
 var category = ds.getModel ('category');
-        
+
 // Hiding the existing remote methods.
 category.sharedClass.find('create',true).shared = false;
 category.sharedClass.find('upsert',true).shared = false;
@@ -18,9 +18,7 @@ category.sharedClass.find('count',true).shared = false;
 category.sharedClass.find('updateAttributes',false).shared = false;
 
 module.exports = function(category){
-	
 	category.getNavBar = function(cb){
-		
 		getTopCategoriesData(function(err, Categories){
 
 			var asyncTasks = [];
@@ -30,7 +28,7 @@ module.exports = function(category){
 					getSubCategoryData(category.uniqueID, cb);
 				});
 			});
-			
+
 			async.parallel(asyncTasks,
 				// callback function
 				function(err, data){
@@ -127,4 +125,119 @@ module.exports = function(category){
 
 			cb(null,destCategoryObj);
 	}
+
+	category.getTopCategory = function(cb){
+		var topCategories = [];
+		var categoryClass = app.models.category;
+		var categoryObj = new categoryClass();
+
+		var childCategoryClass = app.models.childCategory;
+		var categoryHandler = app.models.CategoryHandler;
+		
+		// Invoking the remote method.
+		categoryHandler.getTopCategories(function(err, Categories){
+			if (err) {
+				console.log("Error occurred: " + err);
+				return;
+			}
+			
+			var categories = Categories.CatalogGroupView;
+			var childCategories = [];
+			// console.log(categories.length);
+			categories.forEach(function(category){
+				var childCategoryObj = new childCategoryClass();
+				childCategoryObj.identifier = category.identifier;
+				childCategoryObj.name = category.name;
+				// childCategoryObj.fullImage = category.name;
+				// childCategoryObj.thumbnail = category.identifier;
+				// childCategoryObj.altImageText = category.identifier;
+				// childCategoryObj.parentCategoryId = category.identifier;
+				// childCategoryObj.resourceId = category.identifier;
+				// childCategoryObj.metaKeyword = category.identifier;
+				// childCategoryObj.metaDescription = category.identifier;
+				// childCategoryObj.title = category.identifier;
+				childCategoryObj.uniqueId = category.uniqueID;
+				childCategoryObj.shortDescription = category.shortDescription;
+				/*var subCatNames = [];
+				childCategoryObj.subCategoryNames = subCatNames;*/
+				childCategories.push(childCategoryObj);
+			});
+			categoryObj.childCategory = childCategories;
+			categoryObj.recordSetCount = Categories.recordSetCount;
+			categoryObj.recordSetStartNum = Categories.recordSetStartNumber;
+			categoryObj.recordSetTotal = Categories.recordSetTotal;
+			categoryObj.recordSetComplete = Categories.recordSetComplete;
+			categoryObj.resourceId = Categories.resourceId;
+			categoryObj.resourceName = Categories.resourceName;
+			topCategories.push(categoryObj);
+			// console.log(topCategories.length);
+			cb(null,topCategories);
+		});
+	}
+
+	category.getCategory = function(categoryId, cb){
+		// var topCategories = [];
+		var categoryClass = app.models.category;
+		var categoryObj = new categoryClass();
+
+		var childCategoryClass = app.models.childCategory;
+		var categoryHandler = app.models.CategoryHandler;
+		
+		// Invoking the remote method.
+		categoryHandler.getCategoryById(categoryId, function(err, Categories){
+			if (err) {
+				console.log("Error occurred: " + err);
+				return;
+			}
+			
+			var categories = Categories.CatalogGroupView;
+			// var childCategories = [];
+			// console.log(categories.length);
+			categories.forEach(function(category){
+				var childCategoryObj = new childCategoryClass();
+				childCategoryObj.identifier = category.identifier;
+				childCategoryObj.name = category.name;
+				childCategoryObj.fullImage = category.fullImage;
+				childCategoryObj.thumbnail = category.thumbnail;
+				childCategoryObj.altImageText = category.fullImageAltDescription;
+				// childCategoryObj.parentCategoryId = category.identifier;
+				childCategoryObj.resourceId = category.resourceId;
+				// childCategoryObj.metaKeyword = category.identifier;
+				// childCategoryObj.metaDescription = category.identifier;
+				// childCategoryObj.title = category.identifier;
+				childCategoryObj.uniqueId = category.uniqueID;
+				childCategoryObj.shortDescription = category.shortDescription;
+				/*var subCatNames = [];
+				childCategoryObj.subCategoryNames = subCatNames;*/
+				// childCategories.push(childCategoryObj);
+				categoryObj.childCategory = childCategoryObj;
+			});
+			categoryObj.recordSetCount = Categories.recordSetCount;
+			categoryObj.recordSetStartNum = Categories.recordSetStartNumber;
+			categoryObj.recordSetTotal = Categories.recordSetTotal;
+			categoryObj.recordSetComplete = Categories.recordSetComplete;
+			categoryObj.resourceId = Categories.resourceId;
+			categoryObj.resourceName = Categories.resourceName;
+			// topCategories.push(categoryObj);
+			// console.log(topCategories.length);
+			cb(null, categoryObj);
+		});
+	}
+
+	category.remoteMethod(
+		'getTopCategory',
+		{
+			returns: {arg:'topCategories', type: 'JSON'},
+			http: {path: '/getTopCategory', verb: 'get'}
+		}
+	);
+
+	category.remoteMethod(
+		'getCategory',
+		{
+			accepts: {arg: 'categoryId', type: 'string'},
+			returns: {arg:'category', type: 'JSON'},
+			http: {path: '/getCategory', verb: 'get'}
+		}
+	);
 }
