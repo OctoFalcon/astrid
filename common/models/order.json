@@ -18,11 +18,29 @@
     "grandTotal": {
       "type": "number"
     },
+    "totalProductPrice": {
+      "type": "number"
+    },
     "grandTotalCurrency": {
       "type": "string"
     },
     "lastUpdateTime": {
       "type": "date"
+    },
+    "shippingAddress": {
+      "type": ["string"]
+    },
+    "shippingMethod": {
+      "type": "string"
+    },
+    "billingAddress": {
+      "type": ["string"]
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "paymentAmount": {
+      "type": "string"
     }
   },
   "validations": [],
