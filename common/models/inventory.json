@@ -8,6 +8,9 @@
     },
     "resourceName": {
       "type": "string"
+    }, 
+	"inventoryAvailability": {
+      "type": "inventoryAvailability"
     }
   },
   "validations": [],

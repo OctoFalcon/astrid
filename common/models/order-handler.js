@@ -27,8 +27,42 @@ module.exports = function(OrderHandler){
           returns: {arg: 'addItemToCart', type: 'string'},
         }
     );
+	//Add item 2 cart:
+	OrderHandler.addItem2Cart = function(prodId, qty, wcToken, trustedToken, pId, uId, cb) {
+        var uri = 'https://localhost/wcs/resources/store/10151/cart';
+        //console.log("prodId: "+prodId+" QTY: "+qty); 
+        request({
+            url: uri,
+            method: 'POST',
+			headers:{"WCToken": wcToken,
+					"WCTrustedToken": trustedToken,
+					"personalizationID": pId,
+					"userId": uId
+				},				
+			json:{
+				"orderItem": [{
+				"productId": prodId,
+				"quantity": ''+qty
+				}]
+			},
+        }, 
+		function(err, response) {
+            if (err) console.error(err);
+			//console.log('Result: '+JSON.stringify(response.body));
+			cb(null, response);
+        });	
+    }
+    OrderHandler.remoteMethod(
+        'addItem2Cart', 
+        {
+          accepts: [{arg: 'prodId', type: 'string'},{arg: 'qty', type: 'number'},{arg: 'wcToken', type: 'string'},
+					{arg: 'trustedToken', type: 'string'},{arg: 'pId', type: 'string'},{arg: 'uid', type: 'string'}],
+          returns: {arg: 'add2Cart', type: 'string'},
+        }
+    );
 
 	//Display cart:
+	/*
 	OrderHandler.displayCart = function(displayCart,  cb) {
 	
         var uri = 'http://restfalcon.mybluemix.net/displayCart/9';
@@ -43,13 +77,32 @@ module.exports = function(OrderHandler){
         });	
 		
 	 
+    }*/
+    
+		OrderHandler.displayCart = function( wcToken, trustedToken, pId, uId, cb) {
+        var uri = 'https://localhost/wcs/resources/store/10151/cart/@self';
+
+        request({
+            url: uri,
+            method: 'GET',
+			headers:{"WCToken": wcToken,
+					"WCTrustedToken": trustedToken,
+					"personalizationID": pId,
+					"userId": uId
+			}
+        }, 
+		function(err, response) {
+            if (err) console.error(err);
+			console.log('Result: '+JSON.stringify(response.body));
+			cb(null, '{'+response.request.headers+","+response.body+'}');
+        });	
     }
-     
+	
     OrderHandler.remoteMethod(
         'displayCart', 
         {
-          accepts: [{arg: 'reqBody', type: 'string'}],
-          returns: {arg: 'displayCart', type: 'string'},
+          accepts: [{arg: 'wcToken', type: 'string'},{arg: 'trustedToken', type: 'string'},{arg: 'pId', type: 'string'},{arg: 'uid', type: 'string'}],
+          returns: {arg: 'cartresponse', type: 'string'},
         }
     );
 	

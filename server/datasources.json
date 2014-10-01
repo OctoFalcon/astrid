@@ -3,6 +3,27 @@
     "name": "db",
     "connector": "memory"
   },
+  "wcsInventoryDS": {
+    "name": "wcsInventoryDS",
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://toothless.ngrok.com/wcs/resources/store/10001/inventoryavailability/{productId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getInventory": [
+			"productId"
+          ]
+        }
+      }
+	]
+  },
   "wcsCategoryDS": {
     "name": "wcsCategoryDS",
     "connector": "rest",
@@ -57,12 +78,22 @@
   },
   "wcsAuthenticationDS": {
     "name": "wcsAuthenticationDS",
-    "connector": "rest"
+    "connector": "rest",
+	"operations": [
+      {
+        "template": {
+          "method": "POST",
+          "url": "https://localhost/wcs/resources/store/10151/guestidentity",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+			"guestIdentity":[]
+        }
+      }
+	]
   },  
-  "wcsInventoryDS": {
-    "name": "wcsInventoryDS",
-    "connector": "rest"
-  },
   "wcsOrderDS": {
     "name": "wcsOrderDS",
     "connector": "rest"
