@@ -48,7 +48,8 @@ module.exports = function(category){
 		'getNavBar',
 		{
 			returns: {arg:'navbar', type: 'category'},
-			http: {path: '/getNavBar', verb: 'get'}
+			http: {path: '/getNavBar', verb: 'get'},
+			description: 'Fetches data to display navigation bar. Verticals and Level1 Subcategories.'
 		}
 	);
 
@@ -228,16 +229,18 @@ module.exports = function(category){
 		'getTopCategory',
 		{
 			returns: {arg:'topCategories', type: 'JSON'},
-			http: {path: '/getTopCategory', verb: 'get'}
+			http: {path: '/getTopCategory', verb: 'get'},
+			description: 'Fetches the Verticals.'
 		}
 	);
 
 	category.remoteMethod(
 		'getCategory',
 		{
-			accepts: {arg: 'categoryId', type: 'string'},
+			accepts: {arg: 'categoryId', type: 'string', description: 'CategoryId of the required Category'},
 			returns: {arg:'category', type: 'JSON'},
-			http: {path: '/getCategory', verb: 'get'}
+			http: {path: '/getCategory', verb: 'get'},
+			description: 'Fetches details of the Category'
 		}
 	);
 }

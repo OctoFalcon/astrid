@@ -43,9 +43,11 @@ module.exports = function(order){
     order.remoteMethod(
         'addItemToCart', 
         {
-          accepts: [{arg: 'productId', type: 'string'},{arg: 'qty', type: 'number'}],
+          accepts: [{arg: 'productId', type: 'string', description: 'ProductId of the desired Product.'},
+          		{arg: 'qty', type: 'number', description: 'Required quantity.'}],
 		  http: {path: '/addItemToCart', verb: 'post'},
           returns: {arg: 'addToCart', type: 'JSON'},
+          description: 'Adds an item to cart.'
         }
     );
 	
@@ -68,9 +70,13 @@ module.exports = function(order){
     order.remoteMethod(
         'getCartDetails', 
         {
-          accepts: [{arg: 'wcToken', type: 'string'},{arg: 'trustedToken', type: 'string'},{arg: 'pId', type: 'string'},{arg: 'uid', type: 'string'}],
+          accepts: [{arg: 'wcToken', type: 'string', description: 'wcToken of the User.'},
+          		{arg: 'trustedToken', type: 'string', description: 'wcTrustedToken of the User.'},
+          		{arg: 'pId', type: 'string', description: 'personalizationID of the User.'},
+          		{arg: 'uid', type: 'string', description: 'userId of the User.'}],
 		  http: {path: '/getCartDetails', verb: 'post'},
           returns: {arg: 'CartResp', type: 'JSON'},
+          description: 'Fetch the cart details for the specified User.'
         }
     );	
 };

@@ -42,9 +42,10 @@ module.exports = function(inventory){
     inventory.remoteMethod(
         'getInventoryById', 
         {
-          accepts: [{arg: 'productId', type: 'string'}],
+          accepts: [{arg: 'productId', type: 'string', description: 'ProductId of the desired Product.'}],
 		  http: {path: '/byProductId', verb: 'get'},
           returns: {arg: 'inventory', type: 'JSON'},
+          description: 'Fetch inventory availability for the Product.'
         }
     );
 };
