@@ -229,7 +229,7 @@ module.exports = function(category){
 		'getTopCategory',
 		{
 			returns: {arg:'topCategories', type: 'JSON'},
-			http: {path: '/storeId/getTopCategory', verb: 'get'},
+			http: {path: '/getTopCategory', verb: 'get'},
 			description: 'Fetches the Verticals.'
 		}
 	);
