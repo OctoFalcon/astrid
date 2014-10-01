@@ -237,6 +237,6 @@ module.exports = function(product){
             returns: {arg: 'product', type: 'JSON'},
             http: {path: '/byProductId', verb: 'get'},
             accepts: {arg: 'id', type: 'string', description: 'ProductId to be searched.'},
-            description: 'Fetch products matching the specified productId .
+            description: 'Fetch products matching the specified productId.'
         });
 }
