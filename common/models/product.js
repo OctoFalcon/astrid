@@ -228,13 +228,15 @@ module.exports = function(product){
         { 
             returns: {arg: 'product', type: 'JSON'},
             http: {path: '/bySearchTerm', verb: 'get'},
-            accepts: {arg: 'searchTerm', type: 'string'}
+            accepts: {arg: 'searchTerm', type: 'string', description: 'Search term or Keyword to be searched.'},
+            description: 'Fetch products matching the provided search term.'
         });
 
     product.remoteMethod('productTrans', 
         { 
             returns: {arg: 'product', type: 'JSON'},
             http: {path: '/byProductId', verb: 'get'},
-            accepts: {arg: 'id', type: 'string'}
+            accepts: {arg: 'id', type: 'string', description: 'ProductId to be searched.'},
+            description: 'Fetch products matching the specified productId .
         });
 }

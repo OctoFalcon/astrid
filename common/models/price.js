@@ -38,9 +38,10 @@ module.exports = function(price){
     price.remoteMethod(
         'getPriceById', 
         {
-          accepts: [{arg: 'productId', type: 'string'}],
+          accepts: [{arg: 'productId', type: 'string', description: 'ProductId of the desired Product.'}],
 		  http: {path: '/byProductId', verb: 'post'},
           returns: {arg: 'price', type: 'JSON'},
+          description: 'Fetch the price of the Product.'
         }
     );
 };
