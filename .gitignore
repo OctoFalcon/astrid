@@ -63,3 +63,31 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+common - Copy/models/adjustment.json
+common - Copy/models/attachment.json
+common - Copy/models/attribute.json
+common - Copy/models/category-handler.json
+common - Copy/models/category.js
+common - Copy/models/category.json
+common - Copy/models/child-category.json
+common - Copy/models/inventory-availability.json
+common - Copy/models/inventory-handler.json
+common - Copy/models/inventory.js
+common - Copy/models/inventory.json
+common - Copy/models/login-identity-handler.js
+common - Copy/models/login-identity-handler.json
+common - Copy/models/order-handler.js
+common - Copy/models/order-handler.json
+common - Copy/models/order-item.json
+common - Copy/models/order.js
+common - Copy/models/order.json
+common - Copy/models/price-handler.js
+common - Copy/models/price-handler.json
+common - Copy/models/price.js
+common - Copy/models/price.json
+common - Copy/models/product-handler.js
+common - Copy/models/product-handler.json
+common - Copy/models/product.js
+common - Copy/models/product.json
+common - Copy/models/sku.json
+common - Copy/models/value.json
