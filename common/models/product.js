@@ -26,22 +26,9 @@ module.exports = function(product){
         var skuClass = app.models.sku;
         var skuObj = new skuClass();
 
-        /*var attachmentsClass = app.models.attachment;
-        var attachmentsObj = new attachmentsClass();
-
-        var skuAttachmentsClass = app.models.attachment;
-        var skuAttachmentsObj = new skuAttachmentsClass();*/
-
         var skuAttributesClass = app.models.attribute;
-        
-
         var skuValuesClass = app.models.value;
-        var attributesClass = app.models.attribute;
-
-        // var attrValuesClass = app.models.value;
-
-        /*var valuesClass = app.models.value;
-        var valuesObj = new valuesClass();*/
+        
         var productHandler = app.models.productHandler;
         productHandler.findProductById(id ,function(err, productRes){
             if(productRes){
@@ -61,17 +48,12 @@ module.exports = function(product){
                         productObj.thumbnail = product.thumbnail;
                         productObj.fullImage = product.fullImage;
                         productObj.altImageText = product.fullImageAltDescription;
-                        // productObj.inventory = "dummy inventory";
                         productObj.numberOfSKU = product.numberOfSKUs;
 
                         var prodPrices = product.Price;
                         if(prodPrices){
                             prodPrices.forEach(function(prodPrice){
                                 priceObj.unitPrice = prodPrice.priceValue;
-                                /*priceObj.productId = product.uniqueID;
-                                priceObj.partNumber = product.partNumber;
-                                priceObj.resourceId = productRes.resourceId;
-                                priceObj.resourceName = productRes.resourceName;*/
                                 priceObj.priceDesc = prodPrice.priceDescription;
                                 priceObj.priceUsage = prodPrice.priceUsage;
                                 priceObj.priceValue = prodPrice.priceValue;
@@ -80,11 +62,6 @@ module.exports = function(product){
                         
                         productObj.Price = priceObj;
 
-                        /*skuAttachmentsObj.mimeType = "dummy attachment mimeType";
-                        skuAttachmentsObj.path = "dummy attachment path";
-                        skuAttachmentsObj.identifier = "dummy attachment identifier";
-                        skuAttachmentsObj.metadata = ["dummy attachment metadata"];
-        */
                         var skus = product.SKUs;
                         if(skus){
                             skus.forEach(function(sku){
@@ -101,12 +78,10 @@ module.exports = function(product){
                                             });
                                         }
                                         skuAttributesObj.identifier = skuAttr.name;
-                                        // skuValuesObj.metadata = ["dummy value metadata"];
                                         skuAttributesObj.values = skuValuesObj;
                                         skuAttributesObj.comparable = skuAttr.comparable;
                                         skuAttributesObj.searchable = skuAttr.searchable;
                                         skuAttributesObj.displayable = skuAttr.displayable;
-                                        // skuAttributesObj.metadata = ["dummy metadata"];
                                         skuAttrs.push(skuAttributesObj);
                                     });
                                 }
@@ -117,43 +92,27 @@ module.exports = function(product){
                                         skuObj.price = skusPrices.SKUPriceValue;    
                                     });
                                 }
-                                // skuObj.attachments = skuAttachmentsObj;
                                 skuObj.attributes = skuAttrs;
-                                // skuObj.metadata = ["dummy metadata"];
                             });
                         
                             productObj.Sku = skuObj;
                         }
-                        /*attachmentsObj.mimeType = "dummy attachment mimeType";
-                        attachmentsObj.path = "dummy attachment path";
-                        attachmentsObj.identifier = "dummy attachment identifier";
-                        attachmentsObj.metadata = ["dummy attachment metadata"];
-                        productObj.Attachments = attachmentsObj;*/
-                        
+
                         var attributes = product.Attributes;
                         var attrObj = [];
                         if(attributes){
                             attributes.forEach(function(attribute){
-                                var attributesObj = new attributesClass();
-                                // var attrValuesObj = new attrValuesClass();
+                                var attributesObj = new skuAttributesClass();
                                 attributesObj.identifier = attribute.identifier;
-
-                                // attrValuesObj.values = ["dummy values"];
-                                // attrValuesObj.metadata = ["dummy values"];
-                                // attributesObj.values = attrValuesObj;
 
                                 attributesObj.comparable = attribute.comparable;
                                 attributesObj.searchable = attribute.searchable;
                                 attributesObj.displayable = attribute.displayable;
-                                // attributesObj.metadata = ["dummy metadata"];
                                 attrObj.push(attributesObj);
                             });
                         }
                         productObj.Attributes = attrObj;
 
-                        /*valuesObj.values = ["dummy values"];
-                        valuesObj.metadata = ["dummy value metadata"];
-                        productObj.Values = valuesObj;*/
                     });
                 }
             }
@@ -162,66 +121,67 @@ module.exports = function(product){
     }
 
     product.searchResultsTransfrom = function(searchTerm, cb){ 
-        // console.log(searchTerm);
-        var productClass = app.models.product;
-
-        var priceClass = app.models.price;
         
-
-        var skuClass = app.models.sku;
-        var skuObj = new skuClass();
-
-        var attachmentsClass = app.models.attachment;
-        var attachmentsObj = new attachmentsClass();
-
-        var skuAttachmentsClass = app.models.attachment;
-        var skuAttachmentsObj = new skuAttachmentsClass();
-
-        var skuAttributesClass = app.models.attribute;
-        var skuAttributesObj = new skuAttributesClass();
-
-        var skuValuesClass = app.models.value;
-        var skuValuesObj = new skuValuesClass();
-
-        var attributesClass = app.models.attribute;
-
-        var attrValuesClass = app.models.value;
-
-        var valuesClass = app.models.value;
-        var valuesObj = new valuesClass();
-
         var productHandler = app.models.productHandler;
+        
         productHandler.findProductsBySearchTerm(searchTerm, function(err, searchRes){
-            var productView = searchRes.catalogEntryView;
-            // console.log(productView.length);
             var searchArray = [];
-            if(productView){
-                productView.forEach(function(product){
-                    var productObj = new productClass();
-                    productObj.identifier = product.uniqueID;
-                    productObj.name = product.name;
-                    productObj.shortDesc = product.shortDescription;
-                    productObj.parentCategoryId = [product.parentCatalogGroupID];
-                    productObj.partNumber = product.partNumber;
-                    productObj.thumbnail = product.thumbnail;
-                    productObj.altImageText = product.fullImageAltDescription;
-
-                    var prodPrices = product.price;
-                    if(prodPrices){
-                        prodPrices.forEach(function(prodPrice){
-                            var priceObj = new priceClass();
-                            priceObj.priceDesc = prodPrice.description;
-                            priceObj.priceUsage = prodPrice.usage;
-                            priceObj.priceValue = prodPrice.value;
-                            productObj.Price = priceObj;
-                        });
-                    }
-
-                    searchArray.push(productObj);
-                });
-            }
+            populateProductDetailsSummary(searchRes, searchArray, cb);
             cb(null, searchArray);
         });
+    }
+
+    product.productByIds = function(ids, cb){ 
+        var productHandler = app.models.productHandler;
+
+        if(null != ids && '' != ids) {
+
+            var idArr = ids.split(',');
+
+            productHandler.findByIds(idArr, function(err, data){
+                var resultArr = [];
+                populateProductDetailsSummary(data, resultArr, cb);
+                cb(null, resultArr);
+            });
+
+        } else {
+            cb(null,'At least one productId has to be specified.');
+        }
+        
+    }
+
+    function populateProductDetailsSummary(data, resultArr, cb) {
+
+        var productClass = app.models.product;
+        var priceClass = app.models.price;
+
+        var productView = data.catalogEntryView;
+        
+        if(productView){
+            productView.forEach(function(product){
+                var productObj = new productClass();
+                productObj.identifier = product.uniqueID;
+                productObj.name = product.name;
+                productObj.shortDesc = product.shortDescription;
+                productObj.parentCategoryId = [product.parentCatalogGroupID];
+                productObj.partNumber = product.partNumber;
+                productObj.thumbnail = product.thumbnail;
+                productObj.altImageText = product.fullImageAltDescription;
+
+                var prodPrices = product.price;
+                if(prodPrices){
+                    prodPrices.forEach(function(prodPrice){
+                        var priceObj = new priceClass();
+                        priceObj.priceDesc = prodPrice.description;
+                        priceObj.priceUsage = prodPrice.usage;
+                        priceObj.priceValue = prodPrice.value;
+                        productObj.Price = priceObj;
+                    });
+                }
+
+                resultArr.push(productObj);
+            });
+        }
     }
 
     product.remoteMethod('searchResultsTransfrom', 
@@ -238,5 +198,13 @@ module.exports = function(product){
             http: {path: '/byProductId', verb: 'get'},
             accepts: {arg: 'id', type: 'string', description: 'ProductId to be searched.'},
             description: 'Fetch products matching the specified productId.'
+        });
+
+    product.remoteMethod('productByIds', 
+        { 
+            returns: {arg: 'product', type: 'JSON'},
+            http: {path: '/byProductIds', verb: 'get'},
+            accepts: {arg: 'ids', type: 'string', required: true, description: 'Comma separated string of ProductIds to be searched.'},
+            description: 'Fetch products matching the specified productIds.'
         });
 }
